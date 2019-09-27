@@ -14,7 +14,7 @@ def mem():
         try:
             media2, pointer = agent.get_media(account, pointer=pointer, count=50, delay=0.4)
             for i in media2:
-                kek.append({'text' : i.caption})
+                kek.append({'text' : i.caption, 'likes' : i.likes_count, 'comments' : i.comments_count})
             count += 1
         except:
             pass
