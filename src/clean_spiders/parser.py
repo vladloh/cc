@@ -86,7 +86,8 @@ def process():
         for i in range(sz):
             getted = q.get()
             print(getted['text'])
-            bot.send_message(841622311, getted['text'])
+            text = getted['text']
+            bot.send_message(841622311, f"Text:\n{text}")
 
 
 if __name__ == "__main__":
