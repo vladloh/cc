@@ -12,9 +12,6 @@ def get_last_twitter(id, last_time):
     return 'twittermem'
 
 
-
-
-
 def get_last_time(network, id):
     res = dbworker.get_current_state(id, network)
     return res
@@ -80,15 +77,13 @@ def add_posts(posts):
 
 q = Queue()
 def process(): 
-    while True:
-        time.sleep(3)
-        sz = q.qsize()
-        for i in range(sz):
-            getted = q.get()
-            print(getted['text'])
-            text = getted['text']
-            bot.send_message(841622311, f"Text:\n{text}")
-
+    time.sleep(3)
+    sz = q.qsize()
+    for i in range(sz):
+        getted = q.get()
+        print(getted['text'])
+        text = getted['text']
+        bot.send_message(841622311, f"Text:\n{text}")
 
 if __name__ == "__main__":
     #p = Process(target=process)
