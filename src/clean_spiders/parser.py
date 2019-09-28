@@ -77,7 +77,7 @@ def add_posts(posts):
 
 q = Queue()
 def process(): 
-    time.sleep(3)
+    time.sleep(15)
     sz = q.qsize()
     for i in range(sz):
         getted = q.get()
