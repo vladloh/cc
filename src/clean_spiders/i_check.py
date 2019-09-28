@@ -4,7 +4,6 @@ import time
 import sconfig
 import dbworker
 
-
 def mem(account = sconfig.our, delay = sconfig.delay):
     last = None
     agent = WebAgent()
@@ -30,6 +29,5 @@ def get_last_inst(account = sconfig.our, cnt = 5):
 
 hobbba = get_last_inst()
 
-2 + 2
 #if __name__ == "__main__":
     #mem()
