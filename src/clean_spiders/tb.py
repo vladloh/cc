@@ -1,5 +1,5 @@
 import telebot
-from telebot import types
+#from telebot import types
 from telebot import apihelper
 from sconfig import telegram_token
 
