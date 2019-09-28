@@ -6,3 +6,5 @@ mrartemev/data
 *vector_cache*
 *.torch
 *.zip
+*.state-dict
+*.state_dict

@@ -27,7 +27,7 @@ def get_last_inst(account = sconfig.our, cnt = 5):
         result.append({'url': 'https://www.instagram.com/p/' + i.code + '/', 'time': i.date, 'text': i.caption, 'network': 'inst', 'id': i.owner})
     return result
 
-hobbba = get_last_inst()
+
 
 #if __name__ == "__main__":
     #mem()
