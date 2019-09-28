@@ -12,7 +12,7 @@ def get_current_state(user_id, social_network = 'inst'):
             #print(f"get: key = {key}, value = {str(value)}")
             return value
         except KeyError: 
-            value = 1568674341
+            value = 1368674341
             #print(f"get: key = {key}, value = {value}")
             return value 
 
