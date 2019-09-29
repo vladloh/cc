@@ -27,18 +27,18 @@ def filter_posts(posts, last_time):
 get_last_posts = {'vk' : get_last_vk, 'inst' : get_last_inst, 'tw' : get_last_twitter}
 
 def get_actual_posts(item):
-    print('item', item)
+    #print('item', item)
     id = item['id']
     network = item['network']
     last_time = get_last_time(network, id)
     #print(last_time)
     try:
         posts =  get_last_posts[network](id)#format: {url, text, network, time, id}
-        print('posts', posts)
+        #print('posts', posts)
         posts = filter_posts(posts, last_time)
         return posts
     except:
-        return None
+        return []
 
 
     
@@ -95,9 +95,9 @@ def process():
         getted = q.get()
         data.append(getted)
     data = sorted(data, key = lambda i: get_rating(i), reverse = True)
-    print(len(data))
-
-    for item in data[:20]:
+    #print(len(data))
+    for item in data:
+        print('a', item)
         text = item['text']
         url = item['url']
         js = json.dumps(item)
@@ -117,7 +117,7 @@ if __name__ == "__main__":
         for i in data:
             for j in data[i][:limit]:
                 res.append({'network' : i, 'id' : j})
-        print(res)
+        #print(res)
         splitted_data = iq300split(res)
         for item in splitted_data:
             posts = kek(item)
