@@ -58,6 +58,13 @@ def get_all_1(cursor):
     records = cursor.fetchall()
     return records
 
+@command
+def get_all_2(cursor):
+    cursor.execute('''
+        SELECT * FROM {};
+        '''.format(TB2_NAME))
+    records = cursor.fetchall()
+    return records
 
 @command
 def reset_table_1(cursor):
