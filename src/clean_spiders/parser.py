@@ -5,6 +5,7 @@ import json
 import time
 from sconfig import size
 from tb import bot
+import random
 
 from vk_parser import get_last_vk
 from i_check import get_last_inst
@@ -76,14 +77,25 @@ def add_posts(posts):
         q.put(i)
 
 q = Queue()
+
+def get_rating(post):
+    text = post['text']
+    return random.uniform(0, 1)
+
+
 def process(): 
     time.sleep(15)
     sz = q.qsize()
+    data = []
     for i in range(sz):
         getted = q.get()
-        print(getted['text'])
-        text = getted['text']
-        bot.send_message(841622311, f"Text:\n{text}")
+        data.append(getted)
+    data = sorted(sort(data), key = lambda i: get_rating(i), reverse = True)
+
+    for item in data[:10]:
+        text = item['text']
+        url = item['url']
+        bot.send_message(841622311, f"Text:\n{text}\n\nUrl:{url}\n...........")
 
 if __name__ == "__main__":
     #p = Process(target=process)
