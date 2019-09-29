@@ -29,3 +29,8 @@ def add_user(message):
 @bot.message_handler(type = 'text')
 def reply(message):
     bot.send_message(message.chat.id, 'kek')
+
+
+if __name__ == "__main__":
+    print('started')
+    bot.polling(none_stop=True)
