@@ -97,4 +97,5 @@ def insert_user(telegram_id):
 def get_all_users():
     return list(set([j for i, j in get_all()]))
 
-
+if __name__ == "__main__":
+    reset_table()
