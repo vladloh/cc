@@ -90,7 +90,7 @@ def process():
     for i in range(sz):
         getted = q.get()
         data.append(getted)
-    data = sorted(sort(data), key = lambda i: get_rating(i), reverse = True)
+    data = sorted(data, key = lambda i: get_rating(i), reverse = True)
 
     for item in data[:10]:
         text = item['text']
