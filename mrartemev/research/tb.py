@@ -26,9 +26,13 @@ def add_user(message):
 # if __name__ == "__main__":
 #     bot.polling(none_stop=True)
 
-@bot.message_handler(type = 'text')
+@bot.message_handler(content_types=["text"])
 def reply(message):
-    bot.send_message(message.chat.id, 'kek')
+    text = message.text
+    good = sim.process_similarity(text)
+    if good is None: good = 0
+    bot.send_message(message.chat.id, good)
+
 
 
 if __name__ == "__main__":
