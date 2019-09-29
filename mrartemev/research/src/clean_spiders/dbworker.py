@@ -2,7 +2,7 @@ from vedis import Vedis
 import json
 import sconfig
 import json
-
+import random
 
 #inst - инста, vk - выка, tw - твиттер
 
