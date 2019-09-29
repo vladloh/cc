@@ -34,7 +34,7 @@ import sqlite3
 
 
 TABLE_NAME = "mem_table"
-TB2_NAME = "vlad sosi"
+TB2_NAME = "vlad_sosi"
 
 
 def command(func):
