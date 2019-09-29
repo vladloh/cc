@@ -34,6 +34,7 @@ import sqlite3
 
 
 TABLE_NAME = "mem_table"
+TB2_NAME = "vlad sosi"
 
 
 def command(func):
@@ -50,7 +51,7 @@ def command(func):
 
 
 @command
-def get_all(cursor):
+def get_all_1(cursor):
     cursor.execute('''
         SELECT * FROM {};
         '''.format(TABLE_NAME))
@@ -59,7 +60,7 @@ def get_all(cursor):
 
 
 @command
-def reset_table(cursor):
+def reset_table_1(cursor):
     cursor.execute('''
         DROP TABLE IF EXISTS {};
         '''.format(TABLE_NAME))
@@ -71,31 +72,60 @@ def reset_table(cursor):
 
 
 @command
-def insert(cursor, uid):
+def reset_table_2(cursor):
+    cursor.execute('''
+        DROP TABLE IF EXISTS {};
+        '''.format(TB2_NAME))
+    cursor.execute('''
+        CREATE TABLE {} (
+        ID INTEGER NOT NULL PRIMARY KEY,
+        POST STRING NOT NULL);
+                   '''.format(TB2_NAME))
+
+
+@command
+def insert_1(cursor, uid):
     cursor.execute('''
         INSERT INTO {} (TELEGRAM_ID)
         VALUES (?);
     '''.format(TABLE_NAME, ), (uid, ))
 
+@command
+def insert_2(cursor, post):
+    cursor.execute('''
+        INSERT INTO {} (POST)
+        VALUES (?);
+    '''.format(TB2_NAME, ), (post, ))
 
 @command
-def delete(cursor, uid):
+def delete_1(cursor, uid):
     cursor.execute('''
         DELETE FROM {} WHERE TELEGRAM_ID = ?;
     '''.format(TABLE_NAME, ), (uid, ))
 
+@command
+def delete_2(cursor, post):
+    cursor.execute('''
+        DELETE FROM {} WHERE POST = ?;
+    '''.format(TB2_NAME, ), (post, ))
 
 @command
-def delete_all(cursor):
+def delete_all_1(cursor):
     cursor.execute('''
             DELETE FROM {};
             '''.format(TABLE_NAME))
 
+@command
+def delete_all_2(cursor):
+    cursor.execute('''
+            DELETE FROM {};
+            '''.format(TB2_NAME))
+
 def insert_user(telegram_id):
-    insert(telegram_id)
+    insert_1(telegram_id)
 
 def get_all_users():
-    return list(set([j for i, j in get_all()]))
+    return list(set([j for i, j in get_all_1()]))
 
 if __name__ == "__main__":
-    reset_table()
+    reset_table_1()
