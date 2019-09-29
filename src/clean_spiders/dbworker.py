@@ -129,3 +129,4 @@ def get_all_users():
 
 if __name__ == "__main__":
     reset_table_1()
+    reset_table_2()
