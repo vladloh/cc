@@ -34,7 +34,7 @@ def reply(message):
     if emoji == None: emoij = ''
     if good is None: good = 0
     reply = f'Matched emoji: {emoji}\nRating: {good * 100}%'
-    bot.send_message(message.chat.id, good)
+    bot.send_message(message.chat.id, reply)
 
 
 
