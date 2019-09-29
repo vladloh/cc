@@ -1,6 +1,6 @@
 import telebot
 from sconfig import telegram_token
-from dbworker import insert_user, get_all_users
+from dbworker import insert_user, get_all_users, get_all_posts
 
 bot = telebot.TeleBot(telegram_token)
 
