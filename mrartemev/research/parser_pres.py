@@ -88,7 +88,7 @@ def get_rating(post):
 
 
 def process(): 
-    time.sleep(60)
+    time.sleep(6)
     sz = q.qsize()
     data = []
     for i in range(sz):
@@ -97,21 +97,29 @@ def process():
     data = sorted(data, key = lambda i: get_rating(i), reverse = True)
     #print(len(data))
     for item in data:
-        print('a', item)
-        text = item['text']
-        url = item['url']
-        js = json.dumps(item)
-        insert_2(js)
-
+        try:
+            text = item['text']
+            url = item['url']
+            js = json.dumps(item)
+            insert_2(js)
+        except:
+            pass
+        users = dbworker.get_all_users()
+        for i in users:
+            try:
+                bot.send_message(i, text = url)
+            except:
+                pass
+        
 if __name__ == "__main__":
     #p = Process(target=process)
     #p.start()
     cnt = 0
-    limit = 100
+    limit = 5
     while True:
         print(f"Step {cnt}")
         cnt += 1
-        with open('src/clean_spiders/accs.json', 'r') as file:
+        with open('accs_pres.json', 'r') as file:
             data = json.load(file)
         res = []
         for i in data:
