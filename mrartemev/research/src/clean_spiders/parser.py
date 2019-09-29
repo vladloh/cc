@@ -85,13 +85,14 @@ def get_rating(post):
 
 
 def process(): 
-    time.sleep(60)
+    time.sleep(6)
     sz = q.qsize()
     data = []
     for i in range(sz):
         getted = q.get()
         data.append(getted)
     data = sorted(data, key = lambda i: get_rating(i), reverse = True)
+    print(len(data))
 
     for item in data[:20]:
         text = item['text']
@@ -103,7 +104,7 @@ if __name__ == "__main__":
     #p = Process(target=process)
     #p.start()
     cnt = 0
-    limit = 10
+    limit = 1
     while True:
         print(f"Step {cnt}")
         cnt += 1
@@ -113,7 +114,7 @@ if __name__ == "__main__":
         for i in data:
             for j in data[i][:limit]:
                 res.append({'network' : i, 'id' : j})
-                
+        print(res)
         splitted_data = iq300split(res)
         for item in splitted_data:
             posts = kek(item)
@@ -121,7 +122,7 @@ if __name__ == "__main__":
             print(f"sz = {q.qsize()}")
         process()
         
-
+    
         
 
 

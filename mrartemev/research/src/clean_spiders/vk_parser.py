@@ -14,7 +14,7 @@ def get_last_vk(id, count = 5):
             post_id = i['id']
             nw['time'] = i['date']
             nw['text'] = i['text']
-            nw['id'] = owner_id
+            nw['id'] = id
             nw['network'] = 'vk'
             nw['url'] = f'https://vk.com/wall{owner_id}_{post_id}'
             data.append(nw)

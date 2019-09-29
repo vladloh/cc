@@ -25,6 +25,7 @@ def get_last_inst(account = sconfig.our, cnt = 5):
     media1 = agent.get_media(account, count=cnt)
     for i in media1[0]:
         result.append({'url': 'https://www.instagram.com/p/' + i.code + '/', 'time': i.date, 'text': i.caption, 'network': 'inst', 'id': i.owner})
+    print(result)
     return result
 
 
