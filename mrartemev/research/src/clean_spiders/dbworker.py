@@ -61,7 +61,7 @@ def get_all_1(cursor):
 @command
 def get_all_2(cursor):
     cursor.execute('''
-        SELECT * FROM {};
+        SELECT * FROM {} ORDER BY RANDOM() LIMIT 10;
         '''.format(TB2_NAME))
     records = cursor.fetchall()
     return records
