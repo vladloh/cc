@@ -138,7 +138,7 @@ def get_all_users():
     return list(set([j for i, j in get_all_1()]))
 
 def get_all_posts():
-    return list(set([json.loads(j) for i, j in get_all_2()]))
+    return [json.loads(j) for i, j in get_all_2()]
 
 if __name__ == "__main__":
     reset_table_1()
