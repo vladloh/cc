@@ -33,6 +33,7 @@ def reply(message):
     emoji = sim.process_emoji({'text' : text})
     if emoji == None: emoij = ''
     if good is None: good = 0
+    if good < 0.001: good = 0
     reply = f'Matched emoji: {emoji}\nRating: {good * 100}%'
     bot.send_message(message.chat.id, reply)
 
