@@ -15,7 +15,7 @@ def add_user(message):
 
 
 @bot.message_handler(commands = ['new'])
-@bot.callback_query_handler(func = lambda call: True and call.data.startswith('new')
+#@bot.callback_query_handler(func = lambda call: True and call.data.startswith('new')
 def get_post(message):
     pass
 
