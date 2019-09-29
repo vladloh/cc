@@ -18,7 +18,8 @@ def add_user(message):
 #@bot.callback_query_handler(func = lambda call: True and call.data.startswith('new')
 def get_post(message):
     res = get_all_posts()
-    print(res)
+    kek = res[0]
+    bot.send_message(message.chat.id, kek['url'])
 
 if __name__ == "__main__":
     bot.polling(none_stop=True)
