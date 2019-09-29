@@ -19,6 +19,7 @@ def get_last_time(network, id):
     return res
 
 def filter_posts(posts, last_time):
+    #print(posts, last_time)
     res = [i for i in posts if i['time'] > last_time]
     return res
 
@@ -26,12 +27,14 @@ def filter_posts(posts, last_time):
 get_last_posts = {'vk' : get_last_vk, 'inst' : get_last_inst, 'tw' : get_last_twitter}
 
 def get_actual_posts(item):
+    print('item', item)
     id = item['id']
     network = item['network']
     last_time = get_last_time(network, id)
     #print(last_time)
     try:
         posts =  get_last_posts[network](id)#format: {url, text, network, time, id}
+        print('posts', posts)
         posts = filter_posts(posts, last_time)
         return posts
     except:
