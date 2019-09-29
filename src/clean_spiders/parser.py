@@ -9,6 +9,7 @@ import random
 
 from vk_parser import get_last_vk
 from i_check import get_last_inst
+from dbworker import  insert_2
 def get_last_twitter(id, last_time):
     return 'twittermem'
 
@@ -84,7 +85,7 @@ def get_rating(post):
 
 
 def process(): 
-    time.sleep(15)
+    time.sleep(60)
     sz = q.qsize()
     data = []
     for i in range(sz):
@@ -92,15 +93,17 @@ def process():
         data.append(getted)
     data = sorted(data, key = lambda i: get_rating(i), reverse = True)
 
-    for item in data[:10]:
+    for item in data[:20]:
         text = item['text']
         url = item['url']
-        bot.send_message(841622311, f"Text:\n{text}\n\nUrl:{url}\n...........")
+        js = json.dumps(item)
+        insert_2(js)
 
 if __name__ == "__main__":
     #p = Process(target=process)
     #p.start()
     cnt = 0
+    limit = 10
     while True:
         print(f"Step {cnt}")
         cnt += 1
@@ -108,7 +111,7 @@ if __name__ == "__main__":
             data = json.load(file)
         res = []
         for i in data:
-            for j in data[i]:
+            for j in data[i][:limit]:
                 res.append({'network' : i, 'id' : j})
                 
         splitted_data = iq300split(res)
