@@ -61,7 +61,7 @@ def get_all_1(cursor):
 @command
 def get_all_2(cursor):
     cursor.execute('''
-        SELECT * FROM {} ORDER BY RANDOM() LIMIT 10;
+        SELECT * FROM {};
         '''.format(TB2_NAME))
     records = cursor.fetchall()
     return records
@@ -138,7 +138,7 @@ def get_all_users():
     return list(set([j for i, j in get_all_1()]))
 
 def get_all_posts():
-    return [json.loads(j) for i, j in get_all_2()]
+    return random.shuffle([json.loads(j) for i, j in get_all_2()])
 
 if __name__ == "__main__":
     reset_table_1()
