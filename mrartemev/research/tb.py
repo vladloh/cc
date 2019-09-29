@@ -29,8 +29,11 @@ def add_user(message):
 @bot.message_handler(content_types=["text"])
 def reply(message):
     text = message.text
-    good = sim.process_similarity(text)
+    good = sim.process_similarity({'text' : text})
+    emoji = sim.process_emoji({'text' : text})
+    if emoji == None: emoij = ''
     if good is None: good = 0
+    reply = f'Matched emoji: {emoji}\nRating: {good * 100}%'
     bot.send_message(message.chat.id, good)
 
 
